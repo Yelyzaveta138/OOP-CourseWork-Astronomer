@@ -14,4 +14,4 @@ namespace Astronomer
             Application.Run(new Form1());
         }
     }
-}
+} 
