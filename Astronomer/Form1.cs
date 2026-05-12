@@ -36,13 +36,41 @@ namespace Astronomer
         {
             AddBodyForm addForm = new AddBodyForm();
 
-           
+
             if (addForm.ShowDialog() == DialogResult.OK)
             {
-               
+
                 bodies.Add(addForm.NewBody);
             }
         }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dgvAstronomy.CurrentRow != null)
+            {
+                
+                var body = (CelestialBody)dgvAstronomy.CurrentRow.DataBoundItem;
+                string name = body.Name;
+
+                
+                DialogResult result = MessageBox.Show(
+                    $"Ви впевнені, що хочете видалити об'єкт '{name}'?",
+                    "Підтвердження видалення",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                
+                if (result == DialogResult.Yes)
+                {
+                    
+                    bodies.Remove(body);
+                }
+            }
+            else
+            {
+                
+                MessageBox.Show("Будь ласка, спочатку виберіть об'єкт у таблиці!", "Помилка");
+            }
+        }
     }
 }
