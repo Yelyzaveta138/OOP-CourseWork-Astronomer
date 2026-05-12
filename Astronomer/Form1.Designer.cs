@@ -115,9 +115,11 @@
             Controls.Add(btnAdd);
             Controls.Add(dgvAstronomy);
             Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            KeyPreview = true;
             Margin = new Padding(4, 3, 4, 3);
             Name = "Form1";
             Text = "Довідник астронома";
+            KeyDown += Form1_KeyDown;
             ((System.ComponentModel.ISupportInitialize)dgvAstronomy).EndInit();
             ResumeLayout(false);
             PerformLayout();

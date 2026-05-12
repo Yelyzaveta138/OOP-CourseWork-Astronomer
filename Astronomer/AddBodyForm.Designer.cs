@@ -114,7 +114,7 @@
             // 
             numDistance.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
             numDistance.Location = new Point(634, 263);
-            numDistance.Maximum = new decimal(new int[] { 5000000, 0, 0, 0 });
+            numDistance.Maximum = new decimal(new int[] { 1000000000, 0, 0, 0 });
             numDistance.Name = "numDistance";
             numDistance.Size = new Size(180, 37);
             numDistance.TabIndex = 2;
@@ -171,8 +171,10 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            KeyPreview = true;
             Name = "AddBodyForm";
             Text = "Додати новий об'єкт";
+            KeyDown += AddBodyForm_KeyDown;
             ((System.ComponentModel.ISupportInitialize)numDistance).EndInit();
             ((System.ComponentModel.ISupportInitialize)numMagnitude).EndInit();
             ResumeLayout(false);

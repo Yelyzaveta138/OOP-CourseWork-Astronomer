@@ -73,29 +73,29 @@ namespace Astronomer
             }
         }
 
-       
-            private void btnEdit_Click(object sender, EventArgs e)
+
+        private void btnEdit_Click(object sender, EventArgs e)
         {
             if (dgvAstronomy.CurrentRow != null)
             {
-                
+
                 var body = (CelestialBody)dgvAstronomy.CurrentRow.DataBoundItem;
 
                 AddBodyForm editForm = new AddBodyForm();
 
-                
+
                 editForm.EditBody(body);
 
-               
+
                 if (editForm.ShowDialog() == DialogResult.OK)
                 {
-                    
+
                     body.Name = editForm.NewBody.Name;
                     body.Type = editForm.NewBody.Type;
                     body.Distance = editForm.NewBody.Distance;
                     body.Magnitude = editForm.NewBody.Magnitude;
 
-                    
+
                     bodies.ResetBindings();
                 }
             }
@@ -104,5 +104,15 @@ namespace Astronomer
                 MessageBox.Show("Будь ласка, виберіть об'єкт для редагування!");
             }
         }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+         
+            if (e.KeyCode == Keys.F1)
+            {
+                MessageBox.Show("Це каталог космічних об'єктів. Ви можете додавати, редагувати або видаляти записи за допомогою кнопок праворуч.", "Довідка");
+            }
+        }
     }
-}
+ }
+
