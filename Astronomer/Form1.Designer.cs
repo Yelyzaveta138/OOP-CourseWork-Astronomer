@@ -76,6 +76,7 @@
             btnEdit.TabIndex = 2;
             btnEdit.Text = "Редагувати";
             btnEdit.UseVisualStyleBackColor = false;
+            btnEdit.Click += btnEdit_Click;
             // 
             // btnDelete
             // 

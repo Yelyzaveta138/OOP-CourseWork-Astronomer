@@ -16,6 +16,16 @@ namespace Astronomer
             InitializeComponent();
         }
 
+        public void EditBody(CelestialBody body)
+        {
+            this.Text = "Редагування об'єкта";
+
+            txtName.Text = body.Name;
+            cmbType.Text = body.Type;
+            numDistance.Value = (decimal)body.Distance;
+            numMagnitude.Value = (decimal)body.Magnitude;
+        }
+
         private void label1_Click(object sender, EventArgs e)
         {
 
