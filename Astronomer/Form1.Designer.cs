@@ -63,6 +63,7 @@
             btnAdd.TabIndex = 1;
             btnAdd.Text = "Додати об'єкт";
             btnAdd.UseVisualStyleBackColor = false;
+            btnAdd.Click += btnAdd_Click;
             // 
             // btnEdit
             // 
