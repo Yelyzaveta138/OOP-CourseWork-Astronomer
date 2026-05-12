@@ -112,7 +112,9 @@
             // 
             // numDistance
             // 
+            numDistance.DecimalPlaces = 2;
             numDistance.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            numDistance.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
             numDistance.Location = new Point(634, 263);
             numDistance.Maximum = new decimal(new int[] { 1000000000, 0, 0, 0 });
             numDistance.Name = "numDistance";
@@ -123,6 +125,7 @@
             // 
             numMagnitude.DecimalPlaces = 2;
             numMagnitude.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            numMagnitude.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
             numMagnitude.Location = new Point(1020, 265);
             numMagnitude.Minimum = new decimal(new int[] { 50, 0, 0, int.MinValue });
             numMagnitude.Name = "numMagnitude";

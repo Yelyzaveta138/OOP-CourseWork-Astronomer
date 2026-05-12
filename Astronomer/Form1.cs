@@ -1,3 +1,5 @@
+using System.Text.Json;
+using System.IO;
 namespace Astronomer
 {
     public partial class Form1 : Form
@@ -11,7 +13,7 @@ namespace Astronomer
 
 
             dgvAstronomy.DataSource = bodies;
-
+            LoadData();
 
             if (dgvAstronomy.Columns["Name"] != null)
                 dgvAstronomy.Columns["Name"].HeaderText = "Назва об'єкта";
@@ -29,7 +31,7 @@ namespace Astronomer
             dgvAstronomy.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
 
-            bodies.Add(new CelestialBody("Полярна зоря", "Зірка", 433.0, 1.97));
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -41,6 +43,8 @@ namespace Astronomer
             {
 
                 bodies.Add(addForm.NewBody);
+                SaveData();
+
             }
         }
 
@@ -64,6 +68,7 @@ namespace Astronomer
                 {
 
                     bodies.Remove(body);
+                    SaveData();
                 }
             }
             else
@@ -72,6 +77,7 @@ namespace Astronomer
                 MessageBox.Show("Будь ласка, спочатку виберіть об'єкт у таблиці!", "Помилка");
             }
         }
+
 
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -97,6 +103,7 @@ namespace Astronomer
 
 
                     bodies.ResetBindings();
+                    SaveData();
                 }
             }
             else
@@ -111,6 +118,40 @@ namespace Astronomer
             if (e.KeyCode == Keys.F1)
             {
                 MessageBox.Show("Це каталог космічних об'єктів. Ви можете додавати, редагувати або видаляти записи за допомогою кнопок праворуч.", "Довідка");
+            }
+        }
+
+        private void SaveData()
+        {
+            try
+            {
+                string jsonString = JsonSerializer.Serialize(bodies, new JsonSerializerOptions { WriteIndented = true });
+                File.WriteAllText("data.json", jsonString);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Помилка при збереженні: {ex.Message}");
+            }
+        }
+
+        private void LoadData()
+        {
+            try
+            {
+                if (File.Exists("data.json"))
+                {
+                    string jsonString = File.ReadAllText("data.json");
+                    var loaded = JsonSerializer.Deserialize<List<CelestialBody>>(jsonString);
+                    if (loaded != null)
+                    {
+                        bodies.Clear();
+                        foreach (var item in loaded) bodies.Add(item);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Помилка при завантаженні: {ex.Message}");
             }
         }
     }
