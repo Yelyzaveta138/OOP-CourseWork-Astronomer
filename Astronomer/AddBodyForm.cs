@@ -138,7 +138,7 @@ namespace Astronomer
             }
         }
 
-        // Відображення контекстної довідки за натисканням клавіші F1
+        // Відображення контекстної довідки за натисканням клавіші F1  
         private void AddBodyForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
