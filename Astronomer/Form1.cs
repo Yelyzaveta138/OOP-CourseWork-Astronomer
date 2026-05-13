@@ -1,5 +1,7 @@
-using System.Text.Json;
+using System.ComponentModel;
 using System.IO;
+using System.Text.Json;
+using System.Linq;
 namespace Astronomer
 {
     public partial class Form1 : Form
@@ -69,6 +71,7 @@ namespace Astronomer
 
                     bodies.Remove(body);
                     SaveData();
+                    txtSearch.Text = "";
                 }
             }
             else
@@ -104,6 +107,7 @@ namespace Astronomer
 
                     bodies.ResetBindings();
                     SaveData();
+                    txtSearch.Text = "";
                 }
             }
             else
@@ -114,7 +118,7 @@ namespace Astronomer
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-         
+
             if (e.KeyCode == Keys.F1)
             {
                 MessageBox.Show("Це каталог космічних об'єктів. Ви можете додавати, редагувати або видаляти записи за допомогою кнопок праворуч.", "Довідка");
@@ -154,6 +158,17 @@ namespace Astronomer
                 MessageBox.Show($"Помилка при завантаженні: {ex.Message}");
             }
         }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+      
+            string searchText = txtSearch.Text.ToLower();
+
+            var filteredList = bodies.Where(b => b.Name.ToLower().Contains(searchText)).ToList();
+
+            dgvAstronomy.DataSource = new BindingList<CelestialBody>(filteredList);
+        }
     }
- }
+    
+}
 

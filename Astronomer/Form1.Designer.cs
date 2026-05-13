@@ -33,6 +33,8 @@
             btnEdit = new Button();
             btnDelete = new Button();
             label1 = new Label();
+            label2 = new Label();
+            txtSearch = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvAstronomy).BeginInit();
             SuspendLayout();
             // 
@@ -45,7 +47,7 @@
             dgvAstronomy.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvAstronomy.EnableHeadersVisualStyles = false;
             dgvAstronomy.GridColor = SystemColors.GrayText;
-            dgvAstronomy.Location = new Point(46, 89);
+            dgvAstronomy.Location = new Point(35, 129);
             dgvAstronomy.Name = "dgvAstronomy";
             dgvAstronomy.RowHeadersWidth = 62;
             dgvAstronomy.Size = new Size(796, 668);
@@ -97,11 +99,30 @@
             label1.BackColor = Color.MidnightBlue;
             label1.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
             label1.ForeColor = SystemColors.ControlLightLight;
-            label1.Location = new Point(46, 23);
+            label1.Location = new Point(35, 22);
             label1.Name = "label1";
             label1.Size = new Size(410, 43);
             label1.TabIndex = 4;
             label1.Text = "КОСМІЧНИЙ КАТАЛОГ";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label2.ForeColor = SystemColors.ButtonHighlight;
+            label2.Location = new Point(35, 81);
+            label2.Name = "label2";
+            label2.Size = new Size(227, 30);
+            label2.TabIndex = 5;
+            label2.Text = "Пошук за назвою:";
+            // 
+            // txtSearch
+            // 
+            txtSearch.Location = new Point(268, 81);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(150, 32);
+            txtSearch.TabIndex = 6;
+            txtSearch.TextChanged += txtSearch_TextChanged;
             // 
             // Form1
             // 
@@ -109,6 +130,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
             ClientSize = new Size(1443, 821);
+            Controls.Add(txtSearch);
+            Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(btnDelete);
             Controls.Add(btnEdit);
@@ -132,5 +155,7 @@
         private Button btnEdit;
         private Button btnDelete;
         private Label label1;
+        private Label label2;
+        private TextBox txtSearch;
     }
 }
