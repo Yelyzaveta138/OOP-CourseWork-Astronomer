@@ -161,14 +161,38 @@ namespace Astronomer
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-      
+
             string searchText = txtSearch.Text.ToLower();
 
             var filteredList = bodies.Where(b => b.Name.ToLower().Contains(searchText)).ToList();
 
             dgvAstronomy.DataSource = new BindingList<CelestialBody>(filteredList);
         }
+
+        private void btnStats_Click(object sender, EventArgs e)
+        {
+         
+            if (bodies.Count == 0)
+            {
+                MessageBox.Show("Каталог порожній. Додайте об'єкти для розрахунку статистики.", "Інформація");
+                return;
+            }
+
+            int count = bodies.Count;
+            var brightest = bodies.OrderBy(b => b.Magnitude).First(); 
+            var farthest = bodies.OrderByDescending(b => b.Distance).First();
+            double avgDistance = bodies.Average(b => b.Distance);
+
+            string report = $"--- СТАТИСТИКА КАТАЛОГУ ---\n\n" +
+                            $"Всього об'єктів: {count}\n" +
+                            $"Найяскравіший об'єкт: {brightest.Name} (m = {brightest.Magnitude})\n" +
+                            $"Найвіддаленіший об'єкт: {farthest.Name} ({farthest.Distance} св. р.)\n" +
+                            $"Середня відстань у базі: {avgDistance:F2} св. р.";
+
+            MessageBox.Show(report, "Аналітичний звіт");
+        }
     }
     
+
 }
 

@@ -35,6 +35,7 @@
             label1 = new Label();
             label2 = new Label();
             txtSearch = new TextBox();
+            btnStats = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvAstronomy).BeginInit();
             SuspendLayout();
             // 
@@ -124,12 +125,26 @@
             txtSearch.TabIndex = 6;
             txtSearch.TextChanged += txtSearch_TextChanged;
             // 
+            // btnStats
+            // 
+            btnStats.BackColor = Color.Gold;
+            btnStats.FlatStyle = FlatStyle.Flat;
+            btnStats.Font = new Font("Century Gothic", 10F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            btnStats.Location = new Point(666, 56);
+            btnStats.Name = "btnStats";
+            btnStats.Size = new Size(165, 57);
+            btnStats.TabIndex = 7;
+            btnStats.Text = "Статистика";
+            btnStats.UseVisualStyleBackColor = false;
+            btnStats.Click += btnStats_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(12F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
             ClientSize = new Size(1443, 821);
+            Controls.Add(btnStats);
             Controls.Add(txtSearch);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -157,5 +172,6 @@
         private Label label1;
         private Label label2;
         private TextBox txtSearch;
+        private Button btnStats;
     }
 }
