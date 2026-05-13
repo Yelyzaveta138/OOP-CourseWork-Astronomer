@@ -1,6 +1,6 @@
 ﻿namespace Astronomer
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,6 +29,13 @@
         private void InitializeComponent()
         {
             dgvAstronomy = new DataGridView();
+            Name = new DataGridViewTextBoxColumn();
+            Type = new DataGridViewTextBoxColumn();
+            Distance = new DataGridViewTextBoxColumn();
+            Magnitude = new DataGridViewTextBoxColumn();
+            colConstellation = new DataGridViewTextBoxColumn();
+            colRA = new DataGridViewTextBoxColumn();
+            colDec = new DataGridViewTextBoxColumn();
             btnAdd = new Button();
             btnEdit = new Button();
             btnDelete = new Button();
@@ -41,19 +48,77 @@
             // 
             // dgvAstronomy
             // 
+            dgvAstronomy.AllowUserToAddRows = false;
             dgvAstronomy.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvAstronomy.BackgroundColor = Color.DarkSlateBlue;
             dgvAstronomy.BorderStyle = BorderStyle.None;
             dgvAstronomy.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dgvAstronomy.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAstronomy.Columns.AddRange(new DataGridViewColumn[] { Name, Type, Distance, Magnitude, colConstellation, colRA, colDec });
             dgvAstronomy.EnableHeadersVisualStyles = false;
             dgvAstronomy.GridColor = SystemColors.GrayText;
             dgvAstronomy.Location = new Point(35, 129);
             dgvAstronomy.Name = "dgvAstronomy";
             dgvAstronomy.RowHeadersWidth = 62;
-            dgvAstronomy.Size = new Size(796, 668);
+            dgvAstronomy.Size = new Size(1120, 668);
             dgvAstronomy.TabIndex = 0;
             dgvAstronomy.ColumnHeaderMouseClick += dgvAstronomy_ColumnHeaderMouseClick;
+            // 
+            // Name
+            // 
+            Name.DataPropertyName = "Name";
+            Name.HeaderText = "Назва об'єкта";
+            Name.MinimumWidth = 8;
+            Name.Name = "Name";
+            Name.Width = 150;
+            // 
+            // Type
+            // 
+            Type.DataPropertyName = "Type";
+            Type.HeaderText = "Тип тіла";
+            Type.MinimumWidth = 8;
+            Type.Name = "Type";
+            Type.Width = 150;
+            // 
+            // Distance
+            // 
+            Distance.DataPropertyName = "Distance";
+            Distance.HeaderText = "Відстань (св. р.)";
+            Distance.MinimumWidth = 8;
+            Distance.Name = "Distance";
+            Distance.Width = 150;
+            // 
+            // Magnitude
+            // 
+            Magnitude.DataPropertyName = "Magnitude";
+            Magnitude.HeaderText = "Яскравість (m)";
+            Magnitude.MinimumWidth = 8;
+            Magnitude.Name = "Magnitude";
+            Magnitude.Width = 150;
+            // 
+            // colConstellation
+            // 
+            colConstellation.DataPropertyName = "Constellation";
+            colConstellation.HeaderText = "Сузір'я";
+            colConstellation.MinimumWidth = 8;
+            colConstellation.Name = "colConstellation";
+            colConstellation.Width = 150;
+            // 
+            // colRA
+            // 
+            colRA.DataPropertyName = "RightAscension";
+            colRA.HeaderText = "Пряме сходження (RA)";
+            colRA.MinimumWidth = 8;
+            colRA.Name = "colRA";
+            colRA.Width = 150;
+            // 
+            // colDec
+            // 
+            colDec.DataPropertyName = "Declination";
+            colDec.HeaderText = "Схилення (Dec)";
+            colDec.MinimumWidth = 8;
+            colDec.Name = "colDec";
+            colDec.Width = 150;
             // 
             // btnAdd
             // 
@@ -61,7 +126,7 @@
             btnAdd.FlatStyle = FlatStyle.Flat;
             btnAdd.Font = new Font("Century Gothic", 10F, FontStyle.Bold, GraphicsUnit.Point, 204);
             btnAdd.ForeColor = SystemColors.ControlText;
-            btnAdd.Location = new Point(1083, 206);
+            btnAdd.Location = new Point(1201, 231);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(193, 80);
             btnAdd.TabIndex = 1;
@@ -74,7 +139,7 @@
             btnEdit.BackColor = Color.Aqua;
             btnEdit.FlatStyle = FlatStyle.Flat;
             btnEdit.Font = new Font("Century Gothic", 10F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            btnEdit.Location = new Point(1083, 377);
+            btnEdit.Location = new Point(1201, 402);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(193, 80);
             btnEdit.TabIndex = 2;
@@ -87,7 +152,7 @@
             btnDelete.BackColor = Color.Tomato;
             btnDelete.FlatStyle = FlatStyle.Flat;
             btnDelete.Font = new Font("Century Gothic", 10F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            btnDelete.Location = new Point(1083, 549);
+            btnDelete.Location = new Point(1201, 574);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(193, 80);
             btnDelete.TabIndex = 3;
@@ -131,7 +196,7 @@
             btnStats.BackColor = Color.Gold;
             btnStats.FlatStyle = FlatStyle.Flat;
             btnStats.Font = new Font("Century Gothic", 10F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            btnStats.Location = new Point(666, 56);
+            btnStats.Location = new Point(981, 56);
             btnStats.Name = "btnStats";
             btnStats.Size = new Size(165, 57);
             btnStats.TabIndex = 7;
@@ -139,7 +204,7 @@
             btnStats.UseVisualStyleBackColor = false;
             btnStats.Click += btnStats_Click;
             // 
-            // Form1
+            // MainForm
             // 
             AutoScaleDimensions = new SizeF(12F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -156,7 +221,6 @@
             Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             KeyPreview = true;
             Margin = new Padding(4, 3, 4, 3);
-            Name = "Form1";
             Text = "Довідник астронома";
             KeyDown += Form1_KeyDown;
             ((System.ComponentModel.ISupportInitialize)dgvAstronomy).EndInit();
@@ -174,5 +238,12 @@
         private Label label2;
         private TextBox txtSearch;
         private Button btnStats;
+        private DataGridViewTextBoxColumn Name;
+        private DataGridViewTextBoxColumn Type;
+        private DataGridViewTextBoxColumn Distance;
+        private DataGridViewTextBoxColumn Magnitude;
+        private DataGridViewTextBoxColumn colConstellation;
+        private DataGridViewTextBoxColumn colRA;
+        private DataGridViewTextBoxColumn colDec;
     }
 }

@@ -38,6 +38,12 @@
             numMagnitude = new NumericUpDown();
             btnSave = new Button();
             btnCancel = new Button();
+            label5 = new Label();
+            label6 = new Label();
+            label7 = new Label();
+            txtConstellation = new TextBox();
+            txtRA = new TextBox();
+            txtDec = new TextBox();
             ((System.ComponentModel.ISupportInitialize)numDistance).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numMagnitude).BeginInit();
             SuspendLayout();
@@ -74,7 +80,7 @@
             label3.Font = new Font("Century Gothic", 16F);
             label3.ForeColor = SystemColors.ButtonHighlight;
             label3.ImageIndex = 3;
-            label3.Location = new Point(595, 199);
+            label3.Location = new Point(619, 199);
             label3.Name = "label3";
             label3.Size = new Size(276, 39);
             label3.TabIndex = 2;
@@ -86,7 +92,7 @@
             label4.Font = new Font("Century Gothic", 16F);
             label4.ForeColor = SystemColors.ButtonHighlight;
             label4.ImageIndex = 4;
-            label4.Location = new Point(982, 199);
+            label4.Location = new Point(1020, 199);
             label4.Name = "label4";
             label4.Size = new Size(258, 39);
             label4.TabIndex = 3;
@@ -115,7 +121,7 @@
             numDistance.DecimalPlaces = 2;
             numDistance.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
             numDistance.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
-            numDistance.Location = new Point(634, 263);
+            numDistance.Location = new Point(658, 263);
             numDistance.Maximum = new decimal(new int[] { 1000000000, 0, 0, 0 });
             numDistance.Name = "numDistance";
             numDistance.Size = new Size(180, 37);
@@ -126,7 +132,7 @@
             numMagnitude.DecimalPlaces = 2;
             numMagnitude.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
             numMagnitude.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
-            numMagnitude.Location = new Point(1020, 265);
+            numMagnitude.Location = new Point(1058, 265);
             numMagnitude.Minimum = new decimal(new int[] { 50, 0, 0, int.MinValue });
             numMagnitude.Name = "numMagnitude";
             numMagnitude.Size = new Size(180, 37);
@@ -137,7 +143,7 @@
             btnSave.BackColor = Color.MediumSpringGreen;
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Font = new Font("Century Gothic", 10F, FontStyle.Bold);
-            btnSave.Location = new Point(908, 511);
+            btnSave.Location = new Point(958, 610);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(156, 71);
             btnSave.TabIndex = 4;
@@ -150,7 +156,7 @@
             btnCancel.BackColor = Color.Tomato;
             btnCancel.FlatStyle = FlatStyle.Flat;
             btnCancel.Font = new Font("Century Gothic", 10F, FontStyle.Bold);
-            btnCancel.Location = new Point(1137, 511);
+            btnCancel.Location = new Point(1187, 610);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(156, 71);
             btnCancel.TabIndex = 5;
@@ -158,12 +164,76 @@
             btnCancel.UseVisualStyleBackColor = false;
             btnCancel.Click += btnCancel_Click;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Century Gothic", 16F);
+            label5.ForeColor = SystemColors.ButtonHighlight;
+            label5.Location = new Point(333, 379);
+            label5.Name = "label5";
+            label5.Size = new Size(132, 39);
+            label5.TabIndex = 6;
+            label5.Text = "Сузір'я:";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Century Gothic", 16F);
+            label6.ForeColor = SystemColors.ButtonHighlight;
+            label6.Location = new Point(1001, 379);
+            label6.Name = "label6";
+            label6.Size = new Size(374, 39);
+            label6.TabIndex = 7;
+            label6.Text = "Схилення (гр мін сек):";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Century Gothic", 16F);
+            label7.ForeColor = SystemColors.ButtonHighlight;
+            label7.Location = new Point(514, 379);
+            label7.Name = "label7";
+            label7.Size = new Size(469, 39);
+            label7.TabIndex = 8;
+            label7.Text = "Пряме сходження (год хв с):";
+            // 
+            // txtConstellation
+            // 
+            txtConstellation.Font = new Font("Century Gothic", 12F);
+            txtConstellation.Location = new Point(311, 441);
+            txtConstellation.Name = "txtConstellation";
+            txtConstellation.Size = new Size(180, 37);
+            txtConstellation.TabIndex = 9;
+            // 
+            // txtRA
+            // 
+            txtRA.Font = new Font("Century Gothic", 12F);
+            txtRA.Location = new Point(658, 441);
+            txtRA.Name = "txtRA";
+            txtRA.Size = new Size(180, 37);
+            txtRA.TabIndex = 10;
+            // 
+            // txtDec
+            // 
+            txtDec.Font = new Font("Century Gothic", 12F);
+            txtDec.Location = new Point(1098, 441);
+            txtDec.Name = "txtDec";
+            txtDec.Size = new Size(180, 37);
+            txtDec.TabIndex = 11;
+            txtDec.TextChanged += textBox3_TextChanged;
+            // 
             // AddBodyForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
             ClientSize = new Size(1443, 821);
+            Controls.Add(txtDec);
+            Controls.Add(txtRA);
+            Controls.Add(txtConstellation);
+            Controls.Add(label7);
+            Controls.Add(label6);
+            Controls.Add(label5);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
             Controls.Add(numMagnitude);
@@ -196,5 +266,11 @@
         private NumericUpDown numMagnitude;
         private Button btnSave;
         private Button btnCancel;
+        private Label label5;
+        private Label label6;
+        private Label label7;
+        private TextBox txtConstellation;
+        private TextBox txtRA;
+        private TextBox txtDec;
     }
 }
