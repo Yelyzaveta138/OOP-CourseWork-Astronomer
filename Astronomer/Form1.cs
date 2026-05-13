@@ -206,20 +206,38 @@ namespace Astronomer
             int total = bodies.Count;
             int uniqueConstellations = bodies.Select(b => b.Constellation).Distinct().Count();
 
-            
             var brightest = bodies.OrderBy(b => b.Magnitude).First();
             var farthest = bodies.OrderByDescending(b => b.Distance).First();
             double avgDist = bodies.Average(b => b.Distance);
 
-            
             int northernSky = bodies.Count(b => b.Declination.Trim().StartsWith("+"));
             int southernSky = bodies.Count(b => b.Declination.Trim().StartsWith("-"));
 
-            
             var typeGroups = bodies.GroupBy(b => b.Type)
                                    .Select(g => $"{g.Key}: {g.Count()}")
                                    .ToList();
             string typesSummary = string.Join(", ", typeGroups);
+
+            
+            double observerLatitude = 50.45;
+            DateTime observationTime = DateTime.Now;
+
+            
+            int visibleCount = 0;
+            foreach (var body in bodies)
+            {
+                double decValue = 0;
+                
+                var match = System.Text.RegularExpressions.Regex.Match(body.Declination, @"[-+]?\d+");
+                if (match.Success && double.TryParse(match.Value, out decValue))
+                {
+                    
+                    if (decValue > (observerLatitude - 90))
+                    {
+                        visibleCount++;
+                    }
+                }
+            }
 
             
             string report = $"--- РОЗШИРЕНИЙ АНАЛІТИЧНИЙ ЗВІТ ---\n\n" +
@@ -232,11 +250,15 @@ namespace Astronomer
                             $"Середня відстань у базі: {avgDist:F2} св. р.\n\n" +
                             $"--- СФЕРИЧНІ КООРДИНАТИ ---\n" +
                             $"Північна півкуля неба (+): {northernSky}\n" +
-                            $"Південна півкуля неба (-): {southernSky}\n" +
-                            $"(інші: {total - northernSky - southernSky} — екватор або не вказано)";
+                            $"Південна півкуля неба (-): {southernSky}\n\n" +
+                            $"--- ВИДИМІСТЬ У ЗАДАНІЙ ТОЧЦІ ---\n" +
+                            $"Точка спостереження: {observerLatitude}° пн. ш. (Україна)\n" +
+                            $"Час розрахунку: {observationTime:HH:mm:ss}\n" +
+                            $"Доступно для спостереження: {visibleCount} об'єктів";
 
-        MessageBox.Show(report, "Аналітичний звіт");
+            MessageBox.Show(report, "Аналітичний звіт");
         }
+
 
         // Універсальне сортування об'єктів при натисканні на заголовок колонки
         private void dgvAstronomy_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
