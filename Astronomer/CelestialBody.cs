@@ -14,7 +14,7 @@ namespace Astronomer
         public string RightAscension { get; set; } 
         public string Declination { get; set; }
 
-        // Конструктор для створення нового об'єкта зі всіма параметрами
+        // Конструктор для створення нового об'єкта зі всіма параметрами  
         public CelestialBody(string name, string type, double distance, double magnitude, string constellation, string ra, string dec)
         {
             Name = name;
@@ -23,9 +23,9 @@ namespace Astronomer
             Magnitude = magnitude;
             Constellation = constellation;
             RightAscension = ra;
-            Declination = dec;
+            Declination = dec; 
         }
-        public CelestialBody() { }
+        public CelestialBody() { } 
     }
     
 }
