@@ -53,6 +53,7 @@
             dgvAstronomy.RowHeadersWidth = 62;
             dgvAstronomy.Size = new Size(796, 668);
             dgvAstronomy.TabIndex = 0;
+            dgvAstronomy.ColumnHeaderMouseClick += dgvAstronomy_ColumnHeaderMouseClick;
             // 
             // btnAdd
             // 

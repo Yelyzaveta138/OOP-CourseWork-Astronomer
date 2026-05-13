@@ -171,7 +171,7 @@ namespace Astronomer
 
         private void btnStats_Click(object sender, EventArgs e)
         {
-         
+
             if (bodies.Count == 0)
             {
                 MessageBox.Show("Каталог порожній. Додайте об'єкти для розрахунку статистики.", "Інформація");
@@ -179,7 +179,7 @@ namespace Astronomer
             }
 
             int count = bodies.Count;
-            var brightest = bodies.OrderBy(b => b.Magnitude).First(); 
+            var brightest = bodies.OrderBy(b => b.Magnitude).First();
             var farthest = bodies.OrderByDescending(b => b.Distance).First();
             double avgDistance = bodies.Average(b => b.Distance);
 
@@ -191,8 +191,27 @@ namespace Astronomer
 
             MessageBox.Show(report, "Аналітичний звіт");
         }
+
+        private void dgvAstronomy_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+        
+           
+            string columnName = dgvAstronomy.Columns[e.ColumnIndex].DataPropertyName;
+
+            List<CelestialBody> sortedList;
+
+            sortedList = bodies.OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x, null)).ToList();
+
+            
+            bodies.Clear();
+            foreach (var item in sortedList)
+            {
+                bodies.Add(item);
+            }
+        }
     }
     
+
 
 }
 
