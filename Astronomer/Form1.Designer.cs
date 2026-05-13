@@ -225,7 +225,7 @@
             KeyDown += Form1_KeyDown;
             ((System.ComponentModel.ISupportInitialize)dgvAstronomy).EndInit();
             ResumeLayout(false);
-            PerformLayout();
+            PerformLayout(); 
         }
 
         #endregion
