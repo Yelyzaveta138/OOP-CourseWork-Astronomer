@@ -242,7 +242,7 @@ namespace Astronomer
         private void dgvAstronomy_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             string propName = dgvAstronomy.Columns[e.ColumnIndex].DataPropertyName;
-            if (string.IsNullOrEmpty(propName)) return;
+            if (string.IsNullOrEmpty(propName)) return;  
 
             
             var sorted = bodies.OrderBy(x => x.GetType().GetProperty(propName).GetValue(x, null)).ToList();
