@@ -67,6 +67,12 @@ namespace Astronomer
                     return;
                 }
 
+                if (txtName.Text.Length > 100)
+                {
+                    MessageBox.Show("Назва об'єкта занадто довга (макс. 100 символів)!", "Помилка валідації", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 if (cmbType.SelectedIndex == -1)
                 {
                     MessageBox.Show("Будь ласка, оберіть тип космічного об'єкта!", "Помилка валідації");
@@ -85,14 +91,18 @@ namespace Astronomer
                     return;
                 }
 
-       
                 if (txtConstellation.Text.Any(char.IsDigit))
                 {
                     MessageBox.Show("Назва сузір'я не може містити цифри!", "Помилка формату");
                     return;
                 }
 
-                
+                if (txtConstellation.Text.Length > 100)
+                {
+                    MessageBox.Show("Назва сузір'я занадто довга (макс. 100 символів)!", "Помилка валідації", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 if (string.IsNullOrWhiteSpace(txtRA.Text) || string.IsNullOrWhiteSpace(txtDec.Text))
                 {
                     MessageBox.Show("Введіть координати об'єкта (RA та Dec)!", "Валідація");
