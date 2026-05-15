@@ -102,6 +102,7 @@
             // 
             txtName.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
             txtName.Location = new Point(72, 265);
+            txtName.MaxLength = 100;
             txtName.Name = "txtName";
             txtName.Size = new Size(150, 37);
             txtName.TabIndex = 0;
@@ -201,6 +202,7 @@
             // 
             txtConstellation.Font = new Font("Century Gothic", 12F);
             txtConstellation.Location = new Point(311, 441);
+            txtConstellation.MaxLength = 100;
             txtConstellation.Name = "txtConstellation";
             txtConstellation.Size = new Size(180, 37);
             txtConstellation.TabIndex = 9;
@@ -209,6 +211,7 @@
             // 
             txtRA.Font = new Font("Century Gothic", 12F);
             txtRA.Location = new Point(658, 441);
+            txtRA.MaxLength = 15;
             txtRA.Name = "txtRA";
             txtRA.Size = new Size(180, 37);
             txtRA.TabIndex = 10;
@@ -217,6 +220,7 @@
             // 
             txtDec.Font = new Font("Century Gothic", 12F);
             txtDec.Location = new Point(1098, 441);
+            txtDec.MaxLength = 15;
             txtDec.Name = "txtDec";
             txtDec.Size = new Size(180, 37);
             txtDec.TabIndex = 11;

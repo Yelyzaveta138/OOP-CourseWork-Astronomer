@@ -186,6 +186,7 @@
             // txtSearch
             // 
             txtSearch.Location = new Point(268, 81);
+            txtSearch.MaxLength = 100;
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(150, 32);
             txtSearch.TabIndex = 6;
@@ -225,7 +226,7 @@
             KeyDown += Form1_KeyDown;
             ((System.ComponentModel.ISupportInitialize)dgvAstronomy).EndInit();
             ResumeLayout(false);
-            PerformLayout(); 
+            PerformLayout();
         }
 
         #endregion
